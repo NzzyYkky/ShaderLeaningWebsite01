@@ -5,6 +5,8 @@ import vertexShader from './shaders/vertexShader.glsl';
 import fragmentShader from './shaders/fragmentShader.glsl';
 import * as dat from 'lil-gui';
 
+const gui = new dat.GUI({ width: 300 });
+
 /**
  * Sizes
  */
@@ -31,7 +33,15 @@ const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 const material = new THREE.ShaderMaterial({
 	vertexShader,
 	fragmentShader,
+	uniforms: {
+		uWaveLength: {
+			value: 0.2,
+		},
+	},
 });
+
+// debug
+gui.add(material.uniforms.uWaveLength, 'value').min(0).max(1).step(0.01);
 
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
