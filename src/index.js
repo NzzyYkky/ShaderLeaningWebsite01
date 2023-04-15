@@ -45,6 +45,18 @@ const material = new THREE.ShaderMaterial({
 
 // debug
 gui.add(material.uniforms.uWaveLength, 'value').min(0).max(1).step(0.01);
+gui
+	.add(material.uniforms.uFrequency.value, 'x')
+	.min(0)
+	.max(10)
+	.step(0.001)
+	.name('uFrequencyX');
+gui
+	.add(material.uniforms.uFrequency.value, 'y')
+	.min(0)
+	.max(10)
+	.step(0.001)
+	.name('uFrequencyY');
 
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
