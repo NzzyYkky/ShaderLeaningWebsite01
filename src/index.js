@@ -37,6 +37,9 @@ const material = new THREE.ShaderMaterial({
 		uWaveLength: {
 			value: 0.2,
 		},
+		uFrequency: {
+			value: new THREE.Vector2(5.0, 2.5),
+		},
 	},
 });
 
