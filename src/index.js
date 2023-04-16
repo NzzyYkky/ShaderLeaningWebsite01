@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import vertexShader from './shaders/vertexShader.glsl';
 import fragmentShader from './shaders/fragmentShader.glsl';
 import * as dat from 'lil-gui';
+import skyImage from './textures/sky.jpg';
 
 const gui = new dat.GUI({ width: 300 });
 
@@ -25,6 +26,8 @@ const scene = new THREE.Scene();
  * Textures
  */
 const textureLoader = new THREE.TextureLoader();
+const skyTexture = textureLoader.load(skyImage);
+scene.background = skyTexture;
 
 // Geometry
 const geometry = new THREE.PlaneGeometry(8, 8, 512, 512);
