@@ -40,7 +40,7 @@ const material = new THREE.ShaderMaterial({
 	fragmentShader,
 	uniforms: {
 		uWaveLength: {
-			value: 0.2,
+			value: 0.6,
 		},
 		uFrequency: {
 			value: new THREE.Vector2(5.0, 2.5),
@@ -57,11 +57,22 @@ const material = new THREE.ShaderMaterial({
 		uSurfaceColor: {
 			value: new THREE.Color(colorObject.surfaceColor),
 		},
+		uColorOffset: {
+			value: 0.03,
+		},
+		uColorMultiplier: {
+			value: 9.0,
+		},
 	},
 });
 
 // debug
-gui.add(material.uniforms.uWaveLength, 'value').min(0).max(1).step(0.01);
+gui
+	.add(material.uniforms.uWaveLength, 'value')
+	.min(0)
+	.max(1)
+	.step(0.01)
+	.name('uWaveLength');
 gui
 	.add(material.uniforms.uFrequency.value, 'x')
 	.min(0)
@@ -78,8 +89,20 @@ gui
 	.add(material.uniforms.uWaveSpeed, 'value')
 	.min(0)
 	.max(4)
-	.step(0.001)
+	.step(0.1)
 	.name('uWaveSpeed');
+gui
+	.add(material.uniforms.uColorOffset, 'value')
+	.min(0)
+	.max(1)
+	.step(0.001)
+	.name('uColorOffset');
+gui
+	.add(material.uniforms.uColorMultiplier, 'value')
+	.min(0)
+	.max(10)
+	.step(0.001)
+	.name('uColorMultiplier');
 
 // color gui
 gui.addColor(colorObject, 'depthColor').onChange(() => {
