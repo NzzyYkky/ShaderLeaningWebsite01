@@ -63,6 +63,15 @@ const material = new THREE.ShaderMaterial({
 		uColorMultiplier: {
 			value: 9.0,
 		},
+		uSmallWaveElevation: {
+			value: 0.15,
+		},
+		uSmallWaveFrequency: {
+			value: 3.0,
+		},
+		uSmallWaveSpeed: {
+			value: 0.2,
+		},
 	},
 });
 
@@ -103,6 +112,24 @@ gui
 	.max(10)
 	.step(0.001)
 	.name('uColorMultiplier');
+gui
+	.add(material.uniforms.uSmallWaveElevation, 'value')
+	.min(0)
+	.max(1)
+	.step(0.001)
+	.name('uSmallWaveElevation');
+gui
+	.add(material.uniforms.uSmallWaveFrequency, 'value')
+	.min(0)
+	.max(30)
+	.step(0.001)
+	.name('uSmallWaveFrequency');
+gui
+	.add(material.uniforms.uSmallWaveSpeed, 'value')
+	.min(0)
+	.max(4)
+	.step(0.001)
+	.name('uSmallWaveSpeed');
 
 // color gui
 gui.addColor(colorObject, 'depthColor').onChange(() => {
