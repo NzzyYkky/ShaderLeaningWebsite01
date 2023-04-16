@@ -27,7 +27,7 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 
 // Geometry
-const geometry = new THREE.PlaneGeometry(5, 2, 512, 512);
+const geometry = new THREE.PlaneGeometry(8, 8, 512, 512);
 
 // Color
 const colorObject = {};
@@ -190,6 +190,10 @@ const animate = () => {
 	const elapsedTime = clock.getElapsedTime();
 
 	material.uniforms.uTime.value = elapsedTime;
+
+	// camera around moving
+	camera.position.x = Math.sin(elapsedTime * 0.17) * 3.0;
+	camera.position.z = Math.cos(elapsedTime * 0.17) * 3.0;
 
 	controls.update();
 
