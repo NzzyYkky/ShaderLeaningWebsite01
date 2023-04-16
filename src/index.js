@@ -31,7 +31,7 @@ const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
 // Color
 const colorObject = {};
-colorObject.depthColor = '#2ds81ae';
+colorObject.depthColor = '#2d81ae';
 colorObject.surfaceColor = '#66c1f9';
 
 // Material
