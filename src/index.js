@@ -139,6 +139,8 @@ gui.addColor(colorObject, 'surfaceColor').onChange(() => {
 	material.uniforms.uSurfaceColor.value.set(colorObject.surfaceColor);
 });
 
+gui.show(false);
+
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
 mesh.rotation.x = -Math.PI / 2; // x軸に対して90度
