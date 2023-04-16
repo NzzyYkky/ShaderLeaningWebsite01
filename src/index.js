@@ -29,6 +29,11 @@ const textureLoader = new THREE.TextureLoader();
 // Geometry
 const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
+// Color
+const colorObject = {};
+colorObject.depthColor = '#2ds81ae';
+colorObject.surfaceColor = '#66c1f9';
+
 // Material
 const material = new THREE.ShaderMaterial({
 	vertexShader,
@@ -45,6 +50,12 @@ const material = new THREE.ShaderMaterial({
 		},
 		uWaveSpeed: {
 			value: 0.2,
+		},
+		uDepthColor: {
+			value: new THREE.Color(colorObject.depthColor),
+		},
+		uSurfaceColor: {
+			value: new THREE.Color(colorObject.surfaceColor),
 		},
 	},
 });
@@ -69,6 +80,14 @@ gui
 	.max(4)
 	.step(0.001)
 	.name('uWaveSpeed');
+
+// color gui
+gui.addColor(colorObject, 'depthColor').onChange(() => {
+	material.uniforms.uDepthColor.value.set(colorObject.depthColor);
+});
+gui.addColor(colorObject, 'surfaceColor').onChange(() => {
+	material.uniforms.uSurfaceColor.value.set(colorObject.surfaceColor);
+});
 
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
