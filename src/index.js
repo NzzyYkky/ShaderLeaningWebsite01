@@ -27,7 +27,7 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 
 // Geometry
-const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
+const geometry = new THREE.PlaneGeometry(2, 2, 512, 512);
 
 // Color
 const colorObject = {};
