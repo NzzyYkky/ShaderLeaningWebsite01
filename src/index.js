@@ -40,6 +40,12 @@ const material = new THREE.ShaderMaterial({
 		uFrequency: {
 			value: new THREE.Vector2(5.0, 2.5),
 		},
+		uTime: {
+			value: 0,
+		},
+		uWaveSpeed: {
+			value: 0.2,
+		},
 	},
 });
 
@@ -57,6 +63,12 @@ gui
 	.max(10)
 	.step(0.001)
 	.name('uFrequencyY');
+gui
+	.add(material.uniforms.uWaveSpeed, 'value')
+	.min(0)
+	.max(4)
+	.step(0.001)
+	.name('uWaveSpeed');
 
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
@@ -105,6 +117,8 @@ const clock = new THREE.Clock();
 const animate = () => {
 	//時間取得
 	const elapsedTime = clock.getElapsedTime();
+
+	material.uniforms.uTime.value = elapsedTime;
 
 	controls.update();
 
